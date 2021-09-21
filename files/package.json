@@ -1,7 +1,7 @@
 {
   "name": "snowrunner-xml-editor-desktop",
   "productName": "SnowRunner XML Editor",
-  "version": "0.6.4d",
+  "version": "0.6.4e",
   "description": "Allows you to visually edit the game's XML files.",
   "repository": {
     "type": "git",
