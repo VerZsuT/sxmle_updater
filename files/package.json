@@ -1,7 +1,7 @@
 {
   "name": "snowrunner-xml-editor-desktop",
   "productName": "SnowRunner XML Editor",
-  "version": "0.6.6a",
+  "version": "0.6.6b",
   "description": "Allows you to visually edit the game's XML files.",
   "repository": {
     "type": "git",
@@ -9,14 +9,12 @@
   },
   "main": ".webpack/main",
   "scripts": {
-    "set-arch-x32": "node ./build_scripts/setArch.js x32",
-    "set-arch-x64": "node ./build_scripts/setArch.js x64",
     "build": "node ./build_scripts/preBuild.js && npm run package-prod && node ./build_scripts/postBuild.js x32",
     "build-x64": "node ./build_scripts/preBuild.js && npm run package-prod-x64 && node ./build_scripts/postBuild.js x64",
-    "package-prod": "npm run set-arch-x32 && cross-env NODE_ENV=production electron-forge package --platform=win32 --arch=ia32",
-    "package-prod-x64": "npm run set-arch-x64 && cross-env NODE_ENV=production electron-forge package --platform=win32 --arch=x64",
-    "package": "npm run set-arch-x32 && electron-forge package --platform=win32 --arch=ia32",
-    "package-x64": "npm run set-arch-x64 && electron-forge package --platform=win32 --arch=x64",
+    "package-prod": "cross-env NODE_ENV=production electron-forge package --platform=win32 --arch=ia32",
+    "package-prod-x64": "cross-env NODE_ENV=production electron-forge package --platform=win32 --arch=x64",
+    "package": "electron-forge package --platform=win32 --arch=ia32",
+    "package-x64": "electron-forge package --platform=win32 --arch=x64",
     "start": "electron-forge start"
   },
   "keywords": [],
