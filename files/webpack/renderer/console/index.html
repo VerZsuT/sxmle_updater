@@ -1,1 +1,19 @@
-<!doctype html><html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"><title>SnowRunner XML Editor {--VERSION--}</title><script defer="defer" src="../console/index.js"></script></head><body><div id="main"></div></body></html>
+<!doctype html><html><head><meta charset="utf-8"><title>SnowRunner XML Editor {--VERSION--}</title><script defer="defer" src="../console/index.js"></script></head><body><div id="main"></div><script type="module">const { sendSync } = window.ipc
+            const config = sendSync('property_config_get').value
+            const quit = () => sendSync('function_quit_call')
+            const toggleDevTools = () => sendSync('function_toggleDevTools_call')
+
+            document.title = document.title.replace('{--VERSION--}', `v${config.version}`)
+            document.addEventListener('keydown', event => {
+                if (event.ctrlKey && event.code === 'KeyS') {
+                    const button = document.querySelector('#save')
+                    if (button)
+                        button.click()
+                }
+                else if (event.ctrlKey && event.code === 'KeyQ') {
+                    quit()
+                }
+                else if (event.code === 'KeyI' && event.ctrlKey && event.shiftKey && config.buildType === 'dev') {
+                    toggleDevTools()
+                }
+            })</script></body></html>
